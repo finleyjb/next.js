@@ -194,9 +194,27 @@ export default function initHeadManager(): {
               : ''
       }
       if (title !== document.title) document.title = title
-      ;['meta', 'base', 'link', 'style', 'script'].forEach((type) => {
+      const allowedHeadTags = new Set([
+        'meta',
+        'base',
+        'link',
+        'style',
+        'script',
+      ])
+      allowedHeadTags.forEach((type) => {
         updateElements(type, tags[type] || [])
       })
+      const invalidTags: string[] = []
+      Object.getOwnPropertyNames(tags).forEach((tagName) => {
+        if (!allowedHeadTags.has(tagName) && tagName !== 'title') {
+          invalidTags.push(tagName)
+        }
+      })
+      if (invalidTags.length) {
+        console.error(
+          `Warning: Invalid head tags ${invalidTags}. https://nextjs.org/docs/messages/invalid-head-tag`
+        )
+      }
     },
   }
 }

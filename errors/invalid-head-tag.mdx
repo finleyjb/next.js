@@ -1,0 +1,22 @@
+---
+title: Invalid head tag
+---
+
+## Why This Error Occurred
+
+This error happened because you included a tag in a `Head` block that is not allowed as a child of a `head` element. For example:
+
+```
+<Head>
+  {/* Paragraph tags are not allowed in head */}
+  <p>Invalid tag</p>
+</Head>
+```
+
+## Possible Ways to Fix It
+
+Remove disallowed tag or move it to the body
+
+## Useful Links
+
+- [`head` documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/head)
