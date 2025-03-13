@@ -200,6 +200,8 @@ export default function initHeadManager(): {
         'link',
         'style',
         'script',
+        'noscript',
+        'template',
       ])
       allowedHeadTags.forEach((type) => {
         updateElements(type, tags[type] || [])
