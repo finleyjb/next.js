@@ -194,7 +194,15 @@ export default function initHeadManager(): {
               : ''
       }
       if (title !== document.title) document.title = title
-      ;['meta', 'base', 'link', 'style', 'script'].forEach((type) => {
+      ;[
+        'meta',
+        'base',
+        'link',
+        'style',
+        'script',
+        'noscript',
+        'template',
+      ].forEach((type) => {
         updateElements(type, tags[type] || [])
       })
     },
